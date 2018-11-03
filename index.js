@@ -35,7 +35,7 @@ let jobs = [
     },
     {
         id: 2,
-        companyId: 2,
+        companyId: 1,
         title: "Backend Developer",
         description: "We are looking for a Backend developer familiar with node.js and Express"
     },
@@ -109,6 +109,7 @@ const typeDefs = gql`
         id: Int
         name: String
         description: String
+        jobs: [Job]
     }
 
     type Job {
@@ -138,7 +139,13 @@ const resolvers = {
         job: (_, args) => jobs.filter(job => job.id === args.id)[0],
         users: () => users,
         user: (_, args) => users.find(user => user.id === args.id)[0]
-    }
+    },
+
+    Company: {
+        jobs: (parentValue) => {
+            return jobs.filter(job => job.companyId === parentValue.id)
+        }
+    },
 }
 // Create apolloServer Object to pass typeDefs, and resolvers into
 // First lets initialize our typeDefs and resolvers in a new ApolloServer Object
