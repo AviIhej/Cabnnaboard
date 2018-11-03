@@ -126,6 +126,12 @@ const typeDefs = gql`
         password: String
         companyId: Int
     }
+    # Add mutations
+
+    type Mutation {
+        addJob(title: String!, description: String!): Job
+        deleteJob(id: Int!): [Job!]!
+    }
     # These are our initial typeDefs. We will also create mutations so that we can add users and jobs.
 `
 
@@ -153,6 +159,21 @@ const resolvers = {
             return companies.filter(company => company.id === parentValue.companyId)[0]
         }
     },
+
+    Mutation: {
+        addJob: (parentValue, args, context, info) => {
+            const newJob = {
+                ...args,
+                id: companies.length + 1,
+                companyId: companies.length + 2
+            }
+            jobs.push(newJob)
+            return newJob
+        },
+        deleteJob: (_, args) => {
+            return jobs.filter(job => job.id !== args.id)
+        },
+    }
 }
 // Create apolloServer Object to pass typeDefs, and resolvers into
 // First lets initialize our typeDefs and resolvers in a new ApolloServer Object
