@@ -117,6 +117,7 @@ const typeDefs = gql`
         companyId: Int
         title: String
         description: String
+        company: Company
     }
 
     type User {
@@ -144,6 +145,12 @@ const resolvers = {
     Company: {
         jobs: (parentValue) => {
             return jobs.filter(job => job.companyId === parentValue.id)
+        }
+    },
+
+    Job: {
+        company: (parentValue) => {
+            return companies.filter(company => company.id === parentValue.companyId)[0]
         }
     },
 }
