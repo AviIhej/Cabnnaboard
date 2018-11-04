@@ -2,33 +2,31 @@ import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
 // or you can say this: import {default as ApolloClient } from 'apollo-boost';
 import gql from 'graphql-tag';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, Query } from 'react-apollo';
 import logo from './logo.svg';
 import './App.css';
-import { HttpLink } from 'apollo-link-http';
 
-const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'http://localhost:4000' })
+  uri: 'http://localhost:4000'
 })
 
-const query = gql`
-  {
+const getJobs = gql`
+ { 
     jobs{
       id
       companyId
       title
       description
     }
-  }
+}
 `
 
-client
-  .query({
-    query: query
-  })
-  .then(res => console.log(res))
+// client
+//   .query({
+//     query: getJobs
+//   })
+//   .then(res => console.log(res))
 
 class App extends Component {
   render() {
@@ -41,14 +39,14 @@ class App extends Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
+            <Query query={getJobs}>
+              {({ loading, data }) => {
+                if(loading) return <p>Loading...</p>
+                // instead of saying data.getJobs, we can say
+                 const { jobs } = data
+                 return jobs.map(job => <p key={job.id}>{job.title}</p>)
+              }}
+            </Query>
           </header>
         </div>
       </ApolloProvider>
