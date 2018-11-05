@@ -1,6 +1,10 @@
 // Lets Create our server
 // First we must bring in ApolloServer and gql from apollo-server
 import { ApolloServer, gql } from 'apollo-server'
+import typeDefs from './typeDefs/typeDefs';
+// import resolvers from  './resolvers'
+// named exports
+
 // Create Fake Data
 let companies = [
     {
@@ -94,46 +98,6 @@ let users = [
 
 // Create typeDefs
 
-const typeDefs = gql`
-    type Query {
-       companies: [Company]
-       company(id: Int!): Company
-       jobs: [Job]
-       job(id: Int!): Job
-       users: [User]
-       user(id: Int): User
-    }
-
-    type Company {
-        id: Int
-        name: String
-        description: String
-        jobs: [Job]
-    }
-
-    type Job {
-        id: Int
-        companyId: Int
-        title: String
-        description: String
-        company: Company
-    }
-
-    type User {
-        id: Int
-        email: String
-        password: String
-        companyId: Int
-    }
-    # Add mutations
-
-    type Mutation {
-        addJob(title: String!, description: String!): Job
-        deleteJob(id: Int!): [Job!]!
-    }
-    # These are our initial typeDefs. We will also create mutations so that we can add users and jobs.
-`
-
 // Create resolvers
 const resolvers = {
     Query:{
@@ -177,7 +141,10 @@ const resolvers = {
 // Create apolloServer Object to pass typeDefs, and resolvers into
 // First lets initialize our typeDefs and resolvers in a new ApolloServer Object
 
-const server = new ApolloServer({typeDefs, resolvers})
+const server = new ApolloServer({
+    typeDefs: typeDefs,
+    resolvers
+})
 
 // Create endpoint to expose graphql playground
 server.listen().then(({ url }) => {
