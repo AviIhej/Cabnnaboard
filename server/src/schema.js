@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server';
+import { gql } from "apollo-server";
 
-export default gql`
+const typeDefs = gql`
   type Query {
     companies: [Company]
     company(id: Int!): Company
@@ -37,3 +37,4 @@ export default gql`
     deleteJob(id: Int!): [Job!]!
   }
 `;
+export { typeDefs as default };
