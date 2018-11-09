@@ -23,41 +23,23 @@ let companies = [
 
 let jobs = [
     {
-        id: 1,
-        companyId: 1,
-        title: "Frontend Developer",
-        description: "We are looking for a frontend developer familiar with react"
+        id: "1",
+        title: "Manager", 
+        status: "Full-time", 
+        remoteStatus: "No",
+        description: "A good grower for our company",
+        applyURL: "https://www.newcannabisventures.com/tag/canada/",
+        applyEmail: "mike@gmail.com",
+        liscence: "Marijuana Workers Permit",
+        category: "Cultivation",
+        companyName: "Aurora Cannabis",
+        companyWebsite: "https://auroracannabis.com",
+        aboutCompany: "We are a publicly traded company growing fast",
+        name: "Gordon",
+        email: "gordon@gmail.com"
     },
-    {
-        id: 2,
-        companyId: 1,
-        title: "Backend Developer",
-        description: "We are looking for a Backend developer familiar with node.js and Express"
-    },
-    {
-        id: 3,
-        companyId: 3,
-        title: "Frontend Developer",
-        description: "We are looking for a frontend developer familiar with react"
-    },
-    {
-        id: 4,
-        companyId: 4,
-        title: "Frontend Developer",
-        description: "We are looking for a frontend developer familiar with react"
-    },
-    {
-        id: 5,
-        companyId: 5,
-        title: "Frontend Developer",
-        description: "We are looking for a frontend developer familiar with react"
-    },
-    {
-        id: 6,
-        companyId: 6,
-        title: "Frontend Developer",
-        description: "We are looking for a frontend developer familiar with react"
-    },
+
+ 
 ]
 
 let users = [

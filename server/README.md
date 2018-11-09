@@ -7,3 +7,12 @@ Nodemon watches files with .js and .graphql extensions as well as the index.js f
 },
 
 npm run start
+
+*************
+
+User Schema:
+
+type User = {
+    id: ID!
+    companyEmail
+}
