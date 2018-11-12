@@ -40,10 +40,10 @@ class App extends Component {
               Edit <code>src/App.js</code> and save to reload.
             </p> */}
             {/* <div className="title"> */}
-              <h3 style={{float: "right"}}>CannaBoard 🍁</h3>
+              <h3 style={{float: "right"}}>CannaBoard <span role="img" aria="emoji">🍁</span></h3>
               <button>POST JOB FOR $99</button>
             {/* </div> */}
-            <h1>Post a Job Find a job in the Canadian Cannabis Industry 🇨🇦</h1>
+            <h1>Post a Job Find a job in the Canadian Cannabis Industry <span role="img" aria="emoji">🇨🇦</span></h1>
             <p>Have cannabis jobs sent directly to your inbox!</p>
             <Query query={getJobs}>
               {({ loading, data }) => {

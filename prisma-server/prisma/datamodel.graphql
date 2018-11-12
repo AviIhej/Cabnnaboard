@@ -1,0 +1,22 @@
+# type User {
+#   id: ID! @unique
+#   name: String!
+#   email: String!
+# }
+
+  type Job {
+    id: ID! @unique
+    title: String!
+    status: String!
+    remoteStatus: String!
+    description: String
+    applyURL: String!
+    applyEmail: String!
+    liscence: String!
+    category: String!
+    companyName: String!
+    companyWebsite: String!
+    aboutCompany: String!
+    name: String!
+    email: String!
+  }

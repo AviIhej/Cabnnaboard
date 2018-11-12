@@ -1,0 +1,398 @@
+type AggregateJob {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type Job {
+  id: ID!
+  title: String!
+  status: String!
+  remoteStatus: String!
+  description: String
+  applyURL: String!
+  applyEmail: String!
+  liscence: String!
+  category: String!
+  companyName: String!
+  companyWebsite: String!
+  aboutCompany: String!
+  name: String!
+  email: String!
+}
+
+type JobConnection {
+  pageInfo: PageInfo!
+  edges: [JobEdge]!
+  aggregate: AggregateJob!
+}
+
+input JobCreateInput {
+  title: String!
+  status: String!
+  remoteStatus: String!
+  description: String
+  applyURL: String!
+  applyEmail: String!
+  liscence: String!
+  category: String!
+  companyName: String!
+  companyWebsite: String!
+  aboutCompany: String!
+  name: String!
+  email: String!
+}
+
+type JobEdge {
+  node: Job!
+  cursor: String!
+}
+
+enum JobOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  status_ASC
+  status_DESC
+  remoteStatus_ASC
+  remoteStatus_DESC
+  description_ASC
+  description_DESC
+  applyURL_ASC
+  applyURL_DESC
+  applyEmail_ASC
+  applyEmail_DESC
+  liscence_ASC
+  liscence_DESC
+  category_ASC
+  category_DESC
+  companyName_ASC
+  companyName_DESC
+  companyWebsite_ASC
+  companyWebsite_DESC
+  aboutCompany_ASC
+  aboutCompany_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type JobPreviousValues {
+  id: ID!
+  title: String!
+  status: String!
+  remoteStatus: String!
+  description: String
+  applyURL: String!
+  applyEmail: String!
+  liscence: String!
+  category: String!
+  companyName: String!
+  companyWebsite: String!
+  aboutCompany: String!
+  name: String!
+  email: String!
+}
+
+type JobSubscriptionPayload {
+  mutation: MutationType!
+  node: Job
+  updatedFields: [String!]
+  previousValues: JobPreviousValues
+}
+
+input JobSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: JobWhereInput
+  AND: [JobSubscriptionWhereInput!]
+  OR: [JobSubscriptionWhereInput!]
+  NOT: [JobSubscriptionWhereInput!]
+}
+
+input JobUpdateInput {
+  title: String
+  status: String
+  remoteStatus: String
+  description: String
+  applyURL: String
+  applyEmail: String
+  liscence: String
+  category: String
+  companyName: String
+  companyWebsite: String
+  aboutCompany: String
+  name: String
+  email: String
+}
+
+input JobUpdateManyMutationInput {
+  title: String
+  status: String
+  remoteStatus: String
+  description: String
+  applyURL: String
+  applyEmail: String
+  liscence: String
+  category: String
+  companyName: String
+  companyWebsite: String
+  aboutCompany: String
+  name: String
+  email: String
+}
+
+input JobWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  remoteStatus: String
+  remoteStatus_not: String
+  remoteStatus_in: [String!]
+  remoteStatus_not_in: [String!]
+  remoteStatus_lt: String
+  remoteStatus_lte: String
+  remoteStatus_gt: String
+  remoteStatus_gte: String
+  remoteStatus_contains: String
+  remoteStatus_not_contains: String
+  remoteStatus_starts_with: String
+  remoteStatus_not_starts_with: String
+  remoteStatus_ends_with: String
+  remoteStatus_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  applyURL: String
+  applyURL_not: String
+  applyURL_in: [String!]
+  applyURL_not_in: [String!]
+  applyURL_lt: String
+  applyURL_lte: String
+  applyURL_gt: String
+  applyURL_gte: String
+  applyURL_contains: String
+  applyURL_not_contains: String
+  applyURL_starts_with: String
+  applyURL_not_starts_with: String
+  applyURL_ends_with: String
+  applyURL_not_ends_with: String
+  applyEmail: String
+  applyEmail_not: String
+  applyEmail_in: [String!]
+  applyEmail_not_in: [String!]
+  applyEmail_lt: String
+  applyEmail_lte: String
+  applyEmail_gt: String
+  applyEmail_gte: String
+  applyEmail_contains: String
+  applyEmail_not_contains: String
+  applyEmail_starts_with: String
+  applyEmail_not_starts_with: String
+  applyEmail_ends_with: String
+  applyEmail_not_ends_with: String
+  liscence: String
+  liscence_not: String
+  liscence_in: [String!]
+  liscence_not_in: [String!]
+  liscence_lt: String
+  liscence_lte: String
+  liscence_gt: String
+  liscence_gte: String
+  liscence_contains: String
+  liscence_not_contains: String
+  liscence_starts_with: String
+  liscence_not_starts_with: String
+  liscence_ends_with: String
+  liscence_not_ends_with: String
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  companyName: String
+  companyName_not: String
+  companyName_in: [String!]
+  companyName_not_in: [String!]
+  companyName_lt: String
+  companyName_lte: String
+  companyName_gt: String
+  companyName_gte: String
+  companyName_contains: String
+  companyName_not_contains: String
+  companyName_starts_with: String
+  companyName_not_starts_with: String
+  companyName_ends_with: String
+  companyName_not_ends_with: String
+  companyWebsite: String
+  companyWebsite_not: String
+  companyWebsite_in: [String!]
+  companyWebsite_not_in: [String!]
+  companyWebsite_lt: String
+  companyWebsite_lte: String
+  companyWebsite_gt: String
+  companyWebsite_gte: String
+  companyWebsite_contains: String
+  companyWebsite_not_contains: String
+  companyWebsite_starts_with: String
+  companyWebsite_not_starts_with: String
+  companyWebsite_ends_with: String
+  companyWebsite_not_ends_with: String
+  aboutCompany: String
+  aboutCompany_not: String
+  aboutCompany_in: [String!]
+  aboutCompany_not_in: [String!]
+  aboutCompany_lt: String
+  aboutCompany_lte: String
+  aboutCompany_gt: String
+  aboutCompany_gte: String
+  aboutCompany_contains: String
+  aboutCompany_not_contains: String
+  aboutCompany_starts_with: String
+  aboutCompany_not_starts_with: String
+  aboutCompany_ends_with: String
+  aboutCompany_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  AND: [JobWhereInput!]
+  OR: [JobWhereInput!]
+  NOT: [JobWhereInput!]
+}
+
+input JobWhereUniqueInput {
+  id: ID
+}
+
+scalar Long
+
+type Mutation {
+  createJob(data: JobCreateInput!): Job!
+  updateJob(data: JobUpdateInput!, where: JobWhereUniqueInput!): Job
+  updateManyJobs(data: JobUpdateManyMutationInput!, where: JobWhereInput): BatchPayload!
+  upsertJob(where: JobWhereUniqueInput!, create: JobCreateInput!, update: JobUpdateInput!): Job!
+  deleteJob(where: JobWhereUniqueInput!): Job
+  deleteManyJobs(where: JobWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  job(where: JobWhereUniqueInput!): Job
+  jobs(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Job]!
+  jobsConnection(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): JobConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  job(where: JobSubscriptionWhereInput): JobSubscriptionPayload
+}
