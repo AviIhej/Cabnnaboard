@@ -1,15 +1,31 @@
-import db from './db';
+
 
 const resolvers = {
 
    
+    // In csase I want to add pages to the site, 
+    // const opArgs = {
+    //     first: args.first,
+    //     skip: args.skip
+    // }
     Query:{
+        jobs: (_, args, { prisma }, info) => 
+        {
+            const opArgs = {
+                orderBy: args.orderBy
+            }
+            return prisma.query.jobs(null, info)
+        },
+
+        // job: (_, args) => {
+        //     db.jobs.filter(job => job.id === args.id)[0]
+        // }
+        // jobs: () => db.jobs,
+        // job: (_, args) => db.jobs.filter(job => job.id === args.id)[0],
         // companies: () => db.companies,
         // company: (parentValue, {id}, context, info) => {
         //     return db.companies.filter(company => company.id === id)[0]
         // },
-        jobs: () => db.jobs,
-        job: (_, args) => db.jobs.filter(job => job.id === args.id)[0],
         // users: () => db.users,
         // user: (_, args) => db.users.find(user => user.id === id)[0]
     },
@@ -27,13 +43,16 @@ const resolvers = {
     // },
 
     Mutation: {
-        addJob: (parentValue, args, context, info) => {
-            const newJob = {
-                ...args.data,
-                id: db.jobs.length + "sdffw",
-            }
-            db.jobs.push(newJob)
-            return newJob
+            createJob: (parentValue, args, { prisma }, info) => {
+
+            return prisma.mutation.createJob({ data: args.data }, info)
+
+            // const newJob = {
+            //     ...args.data,
+            //     id: db.jobs.length + "sdffw",
+            // }
+            // db.jobs.push(newJob)
+            // return newJob
         },
 
         deleteJob: (_, args) => {

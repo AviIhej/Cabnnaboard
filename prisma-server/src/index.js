@@ -1,11 +1,16 @@
 import { ApolloServer, gql } from 'apollo-server';
 import typeDefs from './schema';
 import resolvers from './resolvers';
-import './prisma';
+import prisma from './prisma';
+import db from './db';
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context:{
+        db,
+        prisma
+    }
 })
 
 // Create endpoint to expose graphql playground

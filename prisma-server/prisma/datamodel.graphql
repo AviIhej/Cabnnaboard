@@ -1,14 +1,9 @@
-# type User {
-#   id: ID! @unique
-#   name: String!
-#   email: String!
-# }
-
   type Job {
     id: ID! @unique
     title: String!
     status: String!
     remoteStatus: String!
+    location: String!
     description: String
     applyURL: String!
     applyEmail: String!
@@ -19,4 +14,6 @@
     aboutCompany: String!
     name: String!
     email: String!
+    updatedAt: DateTime!
+    createdAt: DateTime!
   }

@@ -6,11 +6,14 @@ type BatchPayload {
   count: Long!
 }
 
+scalar DateTime
+
 type Job {
   id: ID!
   title: String!
   status: String!
   remoteStatus: String!
+  location: String!
   description: String
   applyURL: String!
   applyEmail: String!
@@ -21,6 +24,8 @@ type Job {
   aboutCompany: String!
   name: String!
   email: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
 }
 
 type JobConnection {
@@ -33,6 +38,7 @@ input JobCreateInput {
   title: String!
   status: String!
   remoteStatus: String!
+  location: String!
   description: String
   applyURL: String!
   applyEmail: String!
@@ -59,6 +65,8 @@ enum JobOrderByInput {
   status_DESC
   remoteStatus_ASC
   remoteStatus_DESC
+  location_ASC
+  location_DESC
   description_ASC
   description_DESC
   applyURL_ASC
@@ -79,10 +87,10 @@ enum JobOrderByInput {
   name_DESC
   email_ASC
   email_DESC
-  createdAt_ASC
-  createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type JobPreviousValues {
@@ -90,6 +98,7 @@ type JobPreviousValues {
   title: String!
   status: String!
   remoteStatus: String!
+  location: String!
   description: String
   applyURL: String!
   applyEmail: String!
@@ -100,6 +109,8 @@ type JobPreviousValues {
   aboutCompany: String!
   name: String!
   email: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
 }
 
 type JobSubscriptionPayload {
@@ -124,6 +135,7 @@ input JobUpdateInput {
   title: String
   status: String
   remoteStatus: String
+  location: String
   description: String
   applyURL: String
   applyEmail: String
@@ -140,6 +152,7 @@ input JobUpdateManyMutationInput {
   title: String
   status: String
   remoteStatus: String
+  location: String
   description: String
   applyURL: String
   applyEmail: String
@@ -209,6 +222,20 @@ input JobWhereInput {
   remoteStatus_not_starts_with: String
   remoteStatus_ends_with: String
   remoteStatus_not_ends_with: String
+  location: String
+  location_not: String
+  location_in: [String!]
+  location_not_in: [String!]
+  location_lt: String
+  location_lte: String
+  location_gt: String
+  location_gte: String
+  location_contains: String
+  location_not_contains: String
+  location_starts_with: String
+  location_not_starts_with: String
+  location_ends_with: String
+  location_not_ends_with: String
   description: String
   description_not: String
   description_in: [String!]
@@ -349,6 +376,22 @@ input JobWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   AND: [JobWhereInput!]
   OR: [JobWhereInput!]
   NOT: [JobWhereInput!]

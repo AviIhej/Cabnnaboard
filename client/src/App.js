@@ -3,21 +3,23 @@ import ApolloClient from "apollo-boost";
 // or you can say t his: import {default as ApolloClient } from 'apollo-boost';
 import gql from "graphql-tag";
 import { ApolloProvider, Query } from "react-apollo";
-// import logo from "./logo.svg";
-import "./App.css";
+// import logo from "./logo.
+import moment from 'moment'
+import './App.css'
 
 const client = new ApolloClient({
-  uri: "http://localhost:4466"
+  uri: "http://localhost:4000"
 });
 
 const getJobs = gql`
   query {
-    jobs {
+    jobs(orderBy: createdAt_DESC) {
       id
       title
       status
       companyName
       category
+      createdAt
     }
   }
 `;
@@ -57,6 +59,7 @@ class App extends Component {
                     <li>{job.companyName}</li>
                     <li>{job.category}</li>
                     <li>{job.status}</li>
+                    <li>{moment(job.createdAt).startOf('hour').fromNow()}</li>
                   </ul>
                 ));
               }}
